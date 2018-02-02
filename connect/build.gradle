@@ -10,7 +10,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 27
         versionName "1.1.1"
-        consumerProguardFiles "proguard-rules.pro"
+        //consumerProguardFiles "proguard-rules.pro"
     }
     sourceSets {
         main {
