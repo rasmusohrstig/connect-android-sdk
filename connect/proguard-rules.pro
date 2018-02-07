@@ -28,7 +28,7 @@
 
 # Preserve all annotations.
 
-#-keepattributes *Annotation*
+-keepattributes *Annotation*
 
 # Preserve all public classes, and their public and protected fields and
 # methods.
