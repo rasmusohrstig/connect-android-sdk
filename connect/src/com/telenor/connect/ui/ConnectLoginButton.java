@@ -51,7 +51,6 @@ public class ConnectLoginButton extends ConnectWebViewLoginButton {
     public ConnectLoginButton(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
         setText(R.string.com_telenor_connect_login_button_text);
-        connection = new WeakReferenceCustomTabsServiceConnection(new WeakReference<>(this));
         onClickListener = new LoginClickListener();
         setOnClickListener(onClickListener);
     }
@@ -87,6 +86,7 @@ public class ConnectLoginButton extends ConnectWebViewLoginButton {
         if (packageNameToUse == null) {
             return;
         }
+        connection = new WeakReferenceCustomTabsServiceConnection(new WeakReference<>(this));
         boolean serviceBound = CustomTabsClient.bindCustomTabsService(
                 getContext(), packageNameToUse, connection);
         boolean correctIntentFilter = contextIntentFilterMatchesRedirectUri(getContext());
