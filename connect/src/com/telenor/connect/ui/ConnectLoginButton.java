@@ -83,8 +83,12 @@ public class ConnectLoginButton extends ConnectWebViewLoginButton {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        final String packageNameToUse = CustomTabsHelper.getPackageNameToUse(getContext());
+        if (packageNameToUse == null) {
+            return;
+        }
         boolean serviceBound = CustomTabsClient.bindCustomTabsService(
-                getContext(), CustomTabsHelper.getPackageNameToUse(getContext()), connection);
+                getContext(), packageNameToUse, connection);
         boolean correctIntentFilter = contextIntentFilterMatchesRedirectUri(getContext());
         customTabsSupported = serviceBound && correctIntentFilter;
         browserType = customTabsSupported ? BrowserType.CHROME_CUSTOM_TAB : BrowserType.WEB_VIEW;
